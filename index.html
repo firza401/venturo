@@ -150,6 +150,27 @@
                             'totalAtas' : 0,
                             'totalBawah' : 0
                         }
+
+                        let laporanMenu = {}
+                        menu.forEach(elem => {
+                            let nama = elem.menu
+                            laporanMenu[nama] = {
+                                1:0,
+                                2:0,
+                                3:0,
+                                4:0,
+                                5:0,
+                                6:0,
+                                7:0,
+                                8:0,
+                                9:0,
+                                10:0,
+                                11:0,
+                                12:0,
+                                "totalKanan" : 0
+                            }
+                        })
+
                         console.log(laporan)
                         Object.keys(laporan).forEach(key => {
                             menu.forEach(elem => {
@@ -179,15 +200,20 @@
                                     'kategori' : kategori,
                                     'jumlah' : jumlah + 0,
                                     'total' : total + elem.total,
-                                    'totalAtas' : total - elem.jumlah
+                                    'totalAtas' : total + elem.jumlah
                                 }                        
                             }
+                            laporanMenu[elem.menu][bulan] = laporanMenu[elem.menu][bulan] + elem.total
+                            laporanMenu[elem.menu]['totalKanan'] = laporanMenu[elem.menu]['totalKanan'] + elem.total
+
+
                             laporan['totalBawah'] = lapTotal + elem.total
                             laporan['totalAtas'] = lapTotal + elem.bulan
                         })    
                         
                         console.log(menu);
                         console.log(laporan[1]);
+                        console.log(laporanMenu);
         
                         let i = 0
                     let row = tbody.insertRow()
@@ -219,8 +245,8 @@
                                 }else{
                                     let cell3 = row1.insertCell()
                                     cell3.setAttribute('style', 'text-align:right')
-                                    cell3.innerText += total 
-                                }                            
+                                    cell3.innerText += total
+                                }
                             }                    
                         })
                     })
@@ -234,7 +260,6 @@
                         cell4.innerText += laporan['totalBawah']
                         $('#table').removeAttr('style')
                         
-    
                         console.log(laporan)
     
                     },
