@@ -223,22 +223,6 @@
                                 }                            
                             }                    
                         })
-                        Object.keys(laporan).forEach(key => {
-                            if(laporan[key][elem.menu] != undefined){
-                                let total = laporan[key][elem.menu]['total']
-                                
-                                if(total == 0){
-                                    let cell3 = row1.insertCell()
-                                    cell3.setAttribute('style', 'text-align:right')
-                                    cell3.innerText += ""
-                                }else{
-                                    let cell3 = row1.insertCell()
-                                    cell3.setAttribute('style', 'text-align:right')
-                                    cell3.innerText += total 
-                                }    
-                                console.log(total)                        
-                            }                    
-                        })
                     })
     
                         let row1 = tbody.insertRow()
@@ -249,9 +233,7 @@
                         let cell4 = row1.insertCell()
                         cell4.innerText += laporan['totalBawah']
                         $('#table').removeAttr('style')
-                        let cell5 = row1.insertCell()
-                        cell5.innerText += laporan['totalAtas']
-                        $('#table').removeAttr('style')
+                        
     
                         console.log(laporan)
     
